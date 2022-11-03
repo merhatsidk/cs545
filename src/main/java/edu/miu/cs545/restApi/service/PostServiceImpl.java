@@ -33,7 +33,7 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public PostResponseDto findById(Long id) {
-        return modelMapper.map(postRepo.findById(id),PostResponseDto.class);
+        return modelMapper.map(postRepo.findById(id).isPresent() ? postRepo.findById(id).get():new PostResponseDto(),PostResponseDto.class);
     }
 
     @Override

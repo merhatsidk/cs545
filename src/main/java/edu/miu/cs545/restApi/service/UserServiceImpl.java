@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto findById(Long id) {
-       return modelMapper.map(userRepo.findById(id), UserDto.class);
+       return modelMapper.map(userRepo.findById(id).get(), UserDto.class);
     }
 
     @Override
