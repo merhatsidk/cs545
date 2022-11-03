@@ -1,9 +1,9 @@
 package edu.miu.cs545.restApi;
 
 import edu.miu.cs545.restApi.domain.Post;
-import edu.miu.cs545.restApi.domain.User1;
+import edu.miu.cs545.restApi.domain.User;
 import edu.miu.cs545.restApi.repo.PostRepo;
-import edu.miu.cs545.restApi.repo.User1Repo;
+import edu.miu.cs545.restApi.repo.UserRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -23,7 +23,7 @@ public class RestApiApplication {
 	}
 
 	@Bean
-	public CommandLineRunner run(User1Repo user1Repo){
+	public CommandLineRunner run(UserRepo userRepo){
 		return (args -> {
 			Post p1 = new Post("first post","java","muhedin");
 			Post p2 = new Post("second post","hibernate","john");
@@ -32,9 +32,9 @@ public class RestApiApplication {
 			postRepo.save(p2);
 			postRepo.save(p3);
 
-			User1 u = new User1("merha");
+			User u = new User("merha");
 			u.setPosts(Arrays.asList(p1,p2,p3));
-			user1Repo.save(u);
+			userRepo.save(u);
 //			insertUser(user1Repo);
 		});
 	}

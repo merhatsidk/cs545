@@ -11,7 +11,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class User1 {
+@Table(name = "user_table")
+public class User {
         @Id
         @GeneratedValue
         Long id;
@@ -20,7 +21,7 @@ public class User1 {
                 @JoinColumn
         List<Post> posts;
 
-        public User1(String name) {
+        public User(String name) {
                 this.name = name;
         }
 }
