@@ -49,4 +49,9 @@ public class UserServiceImpl implements UserService {
                .collect(Collectors.toList());
     }
 
+    @Override
+    public List<String> getUsersMoreThanOne() {
+        return userRepo.findUsersMoreThanOne();
+    }
+
 }

@@ -1,6 +1,7 @@
 package edu.miu.cs545.restApi.service;
 
 
+import edu.miu.cs545.restApi.domain.User;
 import edu.miu.cs545.restApi.dto.PostResponseDto;
 import edu.miu.cs545.restApi.dto.UserDto;
 
@@ -14,4 +15,6 @@ public interface UserService {
     void save(UserDto userDto);
 
     List<PostResponseDto> findPostById(Long id);
+
+   List<String> getUsersMoreThanOne();
 }

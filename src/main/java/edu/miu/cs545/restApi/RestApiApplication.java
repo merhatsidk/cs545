@@ -33,8 +33,10 @@ public class RestApiApplication {
 			postRepo.save(p3);
 
 			User u = new User("merha");
+			User u2 = new User("nati");
 			u.setPosts(Arrays.asList(p1,p2,p3));
 			userRepo.save(u);
+			userRepo.save(u2);
 //			insertUser(user1Repo);
 		});
 	}
