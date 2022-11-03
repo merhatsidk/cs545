@@ -25,9 +25,11 @@ public class PostController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public PostResponseDto getById(@PathVariable("id") long id){
+    public PostResponseDto getById(@PathVariable("id") Long id){
         return postService.findById(id);
     }
+
+
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -37,7 +39,7 @@ public class PostController {
 
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete( long id){
+    public void delete( Long id){
         postService.deleteById(id);
     }
 

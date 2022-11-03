@@ -9,8 +9,8 @@ import java.util.List;
 public interface PostService {
 
     public List<PostResponseDto> findAll();
-    public PostResponseDto findById(long id);
+    public PostResponseDto findById(Long id);
     public void save(PostRequestDto postRequestDto);
 
-    public  void deleteById(long id);
+    public  void deleteById(Long id);
 }

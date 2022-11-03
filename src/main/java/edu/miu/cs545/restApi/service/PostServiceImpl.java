@@ -29,8 +29,10 @@ public class PostServiceImpl implements PostService{
 
     }
 
+
+
     @Override
-    public PostResponseDto findById(long id) {
+    public PostResponseDto findById(Long id) {
         return modelMapper.map(postRepo.findById(id),PostResponseDto.class);
     }
 
@@ -41,7 +43,7 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public void deleteById(long id) {
+    public void deleteById(Long id) {
         postRepo.deleteById(id);
     }
 }
