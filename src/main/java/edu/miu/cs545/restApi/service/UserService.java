@@ -5,6 +5,7 @@ import edu.miu.cs545.restApi.domain.User;
 import edu.miu.cs545.restApi.dto.PostResponseDto;
 import edu.miu.cs545.restApi.dto.UserDto;
 
+import javax.persistence.Id;
 import java.util.List;
 
 public interface UserService {
@@ -16,5 +17,7 @@ public interface UserService {
 
     List<PostResponseDto> findPostById(Long id);
 
-   List<String> getUsersMoreThanOne();
+   List<String> findUsersMoreThanOne();
+
+    List<UserDto> moreThanNPosts(int num);
 }

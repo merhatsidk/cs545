@@ -41,7 +41,14 @@ public class UserController {
 
     @GetMapping("/moreThanOne")
     public List<String> moreThanOne(){
-        return userService.getUsersMoreThanOne();
+        return userService.findUsersMoreThanOne();
     }
 
+    @GetMapping("/moreThanNPosts/{num}")
+    public List<UserDto> moreThanNPosts(@PathVariable int num){
+        return userService.moreThanNPosts(num);
+    }
+
+//    @GetMapping("/{id}/posts/{postID}/comments/{commentId}")
+//    public
 }

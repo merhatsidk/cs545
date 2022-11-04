@@ -1,8 +1,10 @@
 package edu.miu.cs545.restApi.controller;
 
+import edu.miu.cs545.restApi.domain.Comment;
 import edu.miu.cs545.restApi.domain.Post;
 import edu.miu.cs545.restApi.dto.PostRequestDto;
 import edu.miu.cs545.restApi.dto.PostResponseDto;
+import edu.miu.cs545.restApi.repo.CommentRepo;
 import edu.miu.cs545.restApi.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,6 +43,25 @@ public class PostController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete( Long id){
         postService.deleteById(id);
+    }
+
+
+    @GetMapping("{id}/comments")
+    public List<Comment> findCommentById(@PathVariable("id") Long id){
+        return postService.findCommentById(id);
+    }
+
+
+
+    @PostMapping("{id}/addComment")
+    public void saveCommentById(@PathVariable Long id, @RequestBody List<Comment> comment){
+         postService.saveCommentById(id,comment);
+    }
+
+    @GetMapping("/MatchingTitle/{title}")
+    //8-	Make a query that will find all the posts that match a given title.
+    public List<Post> getMatchingTitles( @PathVariable("title") String title){
+        return postService.findCommentByTitle(title);
     }
 
 

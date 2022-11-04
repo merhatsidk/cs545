@@ -1,5 +1,6 @@
 package edu.miu.cs545.restApi.service;
 
+import edu.miu.cs545.restApi.domain.Comment;
 import edu.miu.cs545.restApi.domain.Post;
 import edu.miu.cs545.restApi.dto.PostRequestDto;
 import edu.miu.cs545.restApi.dto.PostResponseDto;
@@ -8,6 +9,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,5 +48,25 @@ public class PostServiceImpl implements PostService{
     @Override
     public void deleteById(Long id) {
         postRepo.deleteById(id);
+    }
+
+    @Override
+    public List<Comment> findCommentById(Long id) {
+        var post  = postRepo.findById(id).get();
+        return new ArrayList<>(post.getComments());
+    }
+
+    @Override
+    public void saveCommentById(Long id, List<Comment> comment) {
+        Post p = postRepo.findById(id).get();
+        List<Comment> comments = p.getComments();
+        comments.addAll(comment);
+        postRepo.save(p);
+
+    }
+
+    @Override
+    public List<Post> findCommentByTitle(String title) {
+        return postRepo.findPostByTitleMatches(title);
     }
 }

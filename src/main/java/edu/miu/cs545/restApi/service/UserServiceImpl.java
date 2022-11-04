@@ -50,8 +50,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<String> getUsersMoreThanOne() {
+    public List<String> findUsersMoreThanOne() {
         return userRepo.findUsersMoreThanOne();
+    }
+
+    @Override
+    public List<UserDto> moreThanNPosts(int num) {
+         List<User> users =userRepo.findUserByPostsGreaterThan(num);
+         return users.stream()
+                 .map(user -> modelMapper.map(user,UserDto.class))
+                 .collect(Collectors.toList());
     }
 
 }
