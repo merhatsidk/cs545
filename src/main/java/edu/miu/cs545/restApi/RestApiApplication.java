@@ -23,33 +23,33 @@ public class RestApiApplication {
 		SpringApplication.run(RestApiApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner run(UserRepo userRepo){
-		return (args -> {
-			Post p1 = new Post("first post","java","muhedin");
-			Post p2 = new Post("second post","hibernate","john");
-			Post p3 = new Post("third post","spring","dani");
-//			postRepo.save(p1);
-//			postRepo.save(p2);
-//			postRepo.save(p3);
-
-			Comment c1 = new Comment("comment 1");
-			Comment c2 = new Comment("comment 2");
-			Comment c3 = new Comment("comment 3");
-
-			User u = new User("merha");
-			User u2 = new User("nati");
-			u.setPosts(Arrays.asList(p1,p2,p3));
-			p1.setComments(Arrays.asList(c1));
-			p1.setComments(Arrays.asList(c2));
-			userRepo.save(u);
-			userRepo.save(u2);
-
-			Comment comment = new Comment("new comment");
-
-//			insertUser(user1Repo);
-		});
-	}
+//	@Bean
+//	public CommandLineRunner run(UserRepo userRepo){
+//		return (args -> {
+//			Post p1 = new Post("first post","java","muhedin");
+//			Post p2 = new Post("second post","hibernate","john");
+//			Post p3 = new Post("third post","spring","dani");
+////			postRepo.save(p1);
+////			postRepo.save(p2);
+////			postRepo.save(p3);
+//
+//			Comment c1 = new Comment("comment 1");
+//			Comment c2 = new Comment("comment 2");
+//			Comment c3 = new Comment("comment 3");
+//
+//			User u = new User("merha");
+//			User u2 = new User("nati");
+//			u.setPosts(Arrays.asList(p1,p2,p3));
+//			p1.setComments(Arrays.asList(c1));
+//			p1.setComments(Arrays.asList(c2));
+//			userRepo.save(u);
+//			userRepo.save(u2);
+//
+//			Comment comment = new Comment("new comment");
+//
+////			insertUser(user1Repo);
+//		});
+//	}
 
 
 

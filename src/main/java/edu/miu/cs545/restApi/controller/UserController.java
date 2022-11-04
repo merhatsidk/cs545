@@ -1,5 +1,6 @@
 package edu.miu.cs545.restApi.controller;
 
+import edu.miu.cs545.restApi.domain.Post;
 import edu.miu.cs545.restApi.domain.User;
 import edu.miu.cs545.restApi.dto.PostResponseDto;
 import edu.miu.cs545.restApi.dto.UserDto;
@@ -37,7 +38,13 @@ public class UserController {
         return userService.findPostById(id);
     }
 
-    //6-	Make a query that will return all the users that have more than 1 post
+
+    @PostMapping("/{id}/posts")
+    public void save(@PathVariable Long id, @RequestBody List<Post> posts){
+         userService.save(id,posts);
+    }
+
+    //6-	Make a query that will return all the users that have more than 1 post,
 
     @GetMapping("/moreThanOne")
     public List<String> moreThanOne(){
