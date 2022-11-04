@@ -41,6 +41,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void save(Long id, List<Post> posts) {
+        User u = userRepo.findById(id).get();
+        List<Post> postList =  u.getPosts();
+        postList.addAll(posts);
+
+        userRepo.save(u);
+    }
+
+    @Override
     public List<PostResponseDto> findPostById(Long id) {
         User user = userRepo.findById(id).get();
         List<Post> posts =  user.getPosts();
