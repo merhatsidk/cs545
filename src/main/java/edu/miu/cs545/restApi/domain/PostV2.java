@@ -15,11 +15,11 @@ import javax.persistence.Id;
 public class PostV2 {
 
         @Id @GeneratedValue
-        long id;
-        String title;
-        String content;
-        String author;
-        String play;
+        private Long id;
+        private String title;
+        private String content;
+        private String author;
+
 
 
 }

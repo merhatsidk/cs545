@@ -2,9 +2,12 @@ package edu.miu.cs545.restApi.service;
 
 import edu.miu.cs545.restApi.domain.Comment;
 import edu.miu.cs545.restApi.domain.Post;
+import edu.miu.cs545.restApi.domain.PostV2;
 import edu.miu.cs545.restApi.dto.PostRequestDto;
 import edu.miu.cs545.restApi.dto.PostResponseDto;
+import edu.miu.cs545.restApi.dto.PostResponseDtoV2;
 import edu.miu.cs545.restApi.repo.PostRepo;
+import edu.miu.cs545.restApi.repo.PostRepoV2;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,13 +26,32 @@ public class PostServiceImpl implements PostService{
     @Autowired
     private PostRepo postRepo;
 
+    @Autowired
+    private PostRepoV2 postRepoV2;
+
+//    @Override
+//    public List<PostResponseDto> findAll() {
+//        var posts = postRepo.findAll();
+//              return posts.stream()
+//                .map(post -> modelMapper.map(post,PostResponseDto.class))
+//                .collect(Collectors.toList());
+//
+//    }
+
     @Override
-    public List<PostResponseDto> findAll() {
-        var posts = postRepo.findAll();
-              return posts.stream()
+    public List<PostResponseDto> findAllV1() {
+        List<Post> posts = postRepo.findAll();
+        return posts.stream()
                 .map(post -> modelMapper.map(post,PostResponseDto.class))
                 .collect(Collectors.toList());
+    }
 
+    @Override
+    public List<PostResponseDtoV2> findAllV2() {
+        List<PostV2> posts = postRepoV2.findAll();
+        return posts.stream()
+                .map(post -> modelMapper.map(post, PostResponseDtoV2.class))
+                .collect(Collectors.toList());
     }
 
 

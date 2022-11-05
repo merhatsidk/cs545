@@ -4,6 +4,7 @@ import edu.miu.cs545.restApi.domain.Comment;
 import edu.miu.cs545.restApi.domain.Post;
 import edu.miu.cs545.restApi.dto.PostRequestDto;
 import edu.miu.cs545.restApi.dto.PostResponseDto;
+import edu.miu.cs545.restApi.dto.PostResponseDtoV2;
 import edu.miu.cs545.restApi.repo.CommentRepo;
 import edu.miu.cs545.restApi.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +14,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/posts")
+@RequestMapping("api/posts")
 public class PostController {
 
     @Autowired
     private PostService postService;
 
-    @GetMapping
+
     @ResponseStatus(HttpStatus.OK)
-    public List<PostResponseDto> getPosts(){
-        return postService.findAll();
+    @GetMapping(headers = "v=1")
+    public List<PostResponseDto> findAllV1(){
+        return postService.findAllV1();
+    }
+
+    @GetMapping(headers = "v=2")
+    public List<PostResponseDtoV2> findAllV2(){
+        return postService.findAllV2();
     }
 
     @GetMapping("/{id}")
